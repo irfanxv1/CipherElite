@@ -71,7 +71,7 @@ async def handle_channel_join(client, target_url: str) -> bool:
         return False
 
 async def schedule_next_fetch(client, chat_id):
-    wait_time = random.randint(300, 600)
+    wait_time = random.randint(3, 5)
     await asyncio.sleep(wait_time)
     cmd = random.choice(FETCH_COMMANDS)
     await client.send_message(chat_id, cmd)
