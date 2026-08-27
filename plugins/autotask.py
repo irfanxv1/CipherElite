@@ -143,6 +143,7 @@ async def register_commands():
             await random_delay(3, 6)
             if not joined and skip_btn:
                 await skip_btn.click()
+                TASK_RETRY_COUNT.pop(msg_id, None)
                 return
 
         # Confirm & Smart Retry Logic (Max 2 Attempts)
@@ -156,6 +157,7 @@ async def register_commands():
                 except Exception:
                     if skip_btn:
                         await skip_btn.click()
+                        TASK_RETRY_COUNT.pop(msg_id, None)
             else:
                 if skip_btn:
                     await random_delay(2, 4)
