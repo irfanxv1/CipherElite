@@ -231,6 +231,8 @@ class PersonalAssistant:
             return
 
         sender = await event.get_sender()
+        if not sender:
+    return
         uid = str(sender.id)
 
         if sender.bot or sender.is_self or uid in self.data["approved_users"]:
